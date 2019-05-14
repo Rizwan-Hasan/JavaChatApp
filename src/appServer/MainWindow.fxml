@@ -1,8 +1,19 @@
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<GridPane fx:controller="appServer.Controller"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
-</GridPane>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="406.0" prefWidth="356.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appServer.Controller">
+   <children>
+      <TextField fx:id="portTextField" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="79.0" promptText="Enter Port" text="789" />
+      <TextArea fx:id="receiveMsgBox" layoutX="14.0" layoutY="52.0" prefHeight="200.0" prefWidth="325.0" />
+      <Button fx:id="startServerBtn" layoutX="99.0" layoutY="14.0" mnemonicParsing="false" onAction="#startServerBtnAction" prefHeight="25.0" prefWidth="79.0" text="Start Server" />
+      <Button fx:id="sendMsgBtn" layoutX="296.0" layoutY="371.0" mnemonicParsing="false" text="Send" />
+      <TextArea fx:id="msgBox" layoutX="14.0" layoutY="265.0" prefHeight="96.0" prefWidth="325.0" />
+      <Label fx:id="statusLabel" alignment="CENTER_RIGHT" layoutX="211.0" layoutY="14.0" prefHeight="25.0" prefWidth="127.0" text="Label" />
+      <Label fx:id="serverInfoLabel" layoutX="14.0" layoutY="371.0" prefHeight="25.0" prefWidth="274.0" text="Label" />
+   </children>
+</AnchorPane>
