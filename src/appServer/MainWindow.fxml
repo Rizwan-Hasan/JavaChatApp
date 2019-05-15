@@ -8,7 +8,7 @@
 
 <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="406.0" prefWidth="356.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appServer.Controller">
    <children>
-      <TextField fx:id="portTextField" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="79.0" promptText="Enter Port" text="789" />
+      <TextField fx:id="portTextField" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="79.0" promptText="Enter Port" text="12345" />
       <TextArea fx:id="receiveMsgBox" layoutX="14.0" layoutY="52.0" prefHeight="200.0" prefWidth="325.0" />
       <Button fx:id="startServerBtn" layoutX="99.0" layoutY="14.0" mnemonicParsing="false" onAction="#startServerBtnAction" prefHeight="25.0" prefWidth="79.0" text="Start Server" />
       <Button fx:id="sendMsgBtn" layoutX="296.0" layoutY="371.0" mnemonicParsing="false" text="Send" />
