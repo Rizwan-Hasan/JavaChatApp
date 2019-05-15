@@ -16,24 +16,14 @@ public class Controller extends ControllerObjectVars implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Nothing here
+        this.statusLabel.setText("Server is off");
+        this.chatStatusLabel.setText("Start server and connect with client to chat");
     }
 
     @FXML
     private void startServerBtnAction(ActionEvent event) {
-        if (this.connectionStatus == false) {
+        if (!this.connectionStatus) {
             try {
-                /*
-                this.server = new SocketServer();
-                this.server.closeConnection();
-                int port = Integer.parseInt(this.portTextField.getText().trim());
-                this.server.setPort(port);
-                this.server.startServer();
-                this.startServerBtn.setText("Stop Server");
-                this.statusLabel.setText("Server started");
-                this.connectionStatus = true;
-                */
-
                 // Create a Runnable
                 Runnable task = () -> {
                     this.server = new SocketServer();
@@ -58,12 +48,23 @@ public class Controller extends ControllerObjectVars implements Initializable {
             server.closeConnection();
             try {
                 this.backgroundThread.interrupt();
-            } catch (Exception ignored) {}
+            } catch (Exception ignored) {
+            }
             this.connectionStatus = false;
             this.statusLabel.setText("Server closed");
             this.startServerBtn.setText("Start Server");
             System.out.println("Server closed");
         }
+        event.consume();
+    }
+
+    @FXML
+    private void sendMsgBtnAction (ActionEvent event)
+    {
+        if (this.connectionStatus)
+            this.server.sendMsg(this.msgBox.getText().trim());
+        else
+            this.chatStatusLabel.setText("Wrong try");
         event.consume();
     }
 }

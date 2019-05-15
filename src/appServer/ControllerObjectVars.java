@@ -27,5 +27,5 @@ class ControllerObjectVars
     public Label statusLabel;
 
     @FXML
-    public Label serverInfoLabel;
+    public Label chatStatusLabel;
 }
