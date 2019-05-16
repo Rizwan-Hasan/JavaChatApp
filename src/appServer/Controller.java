@@ -1,7 +1,6 @@
 package appServer;
 
 import appServer.socketCode.SocketServer;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -31,29 +30,33 @@ public class Controller extends ControllerObjectVars implements Initializable {
                     int port = Integer.parseInt(this.portTextField.getText().trim());
                     this.server.setPort(port);
                     this.server.startServer();
-                    Platform.runLater(() -> this.startServerBtn.setText("Stop Server"));
-                    Platform.runLater(() -> this.statusLabel.setText("Server started"));
-                    this.connectionStatus = true;
                 };
                 // Run the task in a background thread
                 this.backgroundThread = new Thread(task);
                 // Start the thread
                 this.backgroundThread.start();
+                Thread.sleep(1000);
 
             } catch (Exception ignored) {
                 this.statusLabel.setText("Wrong port number");
             }
+            this.connectionStatus = true;
             System.out.println("Server started");
+            this.statusLabel.setText("Server started");
+            this.startServerBtn.setText("Stop Server");
+            this.chatStatusLabel.setText("Waiting for client");
         } else {
             server.closeConnection();
             try {
                 this.backgroundThread.interrupt();
+                Thread.sleep(1000);
             } catch (Exception ignored) {
             }
             this.connectionStatus = false;
+            System.out.println("Server closed");
             this.statusLabel.setText("Server closed");
             this.startServerBtn.setText("Start Server");
-            System.out.println("Server closed");
+            this.chatStatusLabel.setText("Start server and connect with client to chat");
         }
         event.consume();
     }

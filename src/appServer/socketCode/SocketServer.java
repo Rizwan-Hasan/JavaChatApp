@@ -52,6 +52,7 @@ public class SocketServer {
                 String msg = "";
                 while (!msg.equals("stop")) {
                     msg = this.din.readUTF();
+                    System.out.println(msg);
                     final String tmp = msg;
                     Platform.runLater(() -> Main.controller.receiveMsgBox.appendText("Client: " + tmp));
                     Platform.runLater(() -> Main.controller.receiveMsgBox.appendText(this.msgSeparator));
