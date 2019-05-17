@@ -16,6 +16,8 @@ public class Controller extends ControllerObjectVars implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.receiveMsgBox.setEditable(false);
+        this.receiveMsgBox.setWrapText(true);
+        this.msgBox.setWrapText(true);
         this.statusLabel.setText("Server is off");
         this.chatStatusLabel.setText("Start server and connect with client to chat");
     }
@@ -69,6 +71,19 @@ public class Controller extends ControllerObjectVars implements Initializable {
             this.server.sendMsg(this.msgBox.getText().trim());
         else
             this.chatStatusLabel.setText("Wrong try");
+
+        try {
+            Thread.sleep(100);
+        } catch (Exception ignored) {
+        }
+
         event.consume();
+    }
+
+    @FXML
+    private void clearMsgBtnAction (ActionEvent event)
+    {
+        this.receiveMsgBox.setText(null);
+        this.msgBox.setText(null);
     }
 }

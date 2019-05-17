@@ -6,14 +6,15 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="406.0" prefWidth="356.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appServer.Controller">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="406.0" prefWidth="410.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appServer.Controller">
    <children>
-      <TextField fx:id="portTextField" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="79.0" promptText="Enter Port" text="12345" />
-      <TextArea fx:id="receiveMsgBox" layoutX="14.0" layoutY="52.0" prefHeight="244.0" prefWidth="325.0" />
-      <Button fx:id="startServerBtn" layoutX="99.0" layoutY="14.0" mnemonicParsing="false" onAction="#startServerBtnAction" prefHeight="25.0" prefWidth="79.0" text="Start Server" />
-      <Button fx:id="sendMsgBtn" layoutX="296.0" layoutY="371.0" mnemonicParsing="false" onAction="#sendMsgBtnAction" text="Send" />
-      <TextArea fx:id="msgBox" layoutX="14.0" layoutY="306.0" prefHeight="55.0" prefWidth="325.0" />
-      <Label fx:id="statusLabel" alignment="CENTER_RIGHT" layoutX="211.0" layoutY="14.0" prefHeight="25.0" prefWidth="127.0" text="Label" />
-      <Label fx:id="chatStatusLabel" layoutX="14.0" layoutY="371.0" prefHeight="25.0" prefWidth="274.0" text="Label" />
+      <TextField fx:id="portTextField" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="88.0" promptText="Enter Port" text="12345" />
+      <TextArea fx:id="receiveMsgBox" layoutX="14.0" layoutY="52.0" prefHeight="244.0" prefWidth="381.0" promptText="All message will be shown here" />
+      <Button fx:id="startServerBtn" layoutX="115.0" layoutY="14.0" mnemonicParsing="false" onAction="#startServerBtnAction" prefHeight="25.0" prefWidth="79.0" text="Start Server" />
+      <Button fx:id="sendMsgBtn" layoutX="343.0" layoutY="371.0" mnemonicParsing="false" onAction="#sendMsgBtnAction" prefHeight="25.0" prefWidth="52.0" text="Send" />
+      <TextArea fx:id="msgBox" layoutX="14.0" layoutY="306.0" prefHeight="55.0" prefWidth="381.0" promptText="Type a message" />
+      <Label fx:id="statusLabel" alignment="CENTER_RIGHT" layoutX="205.0" layoutY="14.0" prefHeight="25.0" prefWidth="189.0" text="Label" />
+      <Label fx:id="chatStatusLabel" layoutX="14.0" layoutY="371.0" prefHeight="25.0" prefWidth="248.0" text="Label" />
+      <Button fx:id="clearMsgBtn" layoutX="271.0" layoutY="371.0" mnemonicParsing="false" onAction="#clearMsgBtnAction" text="Clear all" />
    </children>
 </AnchorPane>

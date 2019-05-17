@@ -27,6 +27,9 @@ class ControllerObjectVars
     public Button sendMsgBtn;
 
     @FXML
+    public Button clearMsgBtn;
+
+    @FXML
     public Label statusLabel;
 
     @FXML

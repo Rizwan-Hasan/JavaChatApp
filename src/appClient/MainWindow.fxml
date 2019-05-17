@@ -6,15 +6,16 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="406.0" prefWidth="356.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appClient.Controller">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="406.0" prefWidth="410.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appClient.Controller">
     <children>
         <TextField fx:id="portTextField" layoutX="120.0" layoutY="14.0" prefHeight="25.0" prefWidth="50.0" promptText="Enter Port" text="12345" />
-        <TextArea fx:id="receiveMsgBox" layoutX="14.0" layoutY="52.0" prefHeight="244.0" prefWidth="325.0" />
+        <TextArea fx:id="receiveMsgBox" layoutX="14.0" layoutY="52.0" prefHeight="244.0" prefWidth="382.0" promptText="All message will be shown here" />
         <Button fx:id="connectServerBtn" layoutX="177.0" layoutY="14.0" mnemonicParsing="false" onAction="#connectServerBtnAction" prefHeight="25.0" prefWidth="77.0" text="Connect" />
-        <Button fx:id="sendMsgBtn" layoutX="296.0" layoutY="371.0" mnemonicParsing="false" onAction="#sendMsgBtnAction" text="Send" />
-        <TextArea fx:id="msgBox" layoutX="14.0" layoutY="306.0" prefHeight="55.0" prefWidth="325.0" />
-        <Label fx:id="statusLabel" alignment="CENTER_RIGHT" layoutX="262.0" layoutY="14.0" prefHeight="25.0" prefWidth="77.0" text="Label" />
-        <Label fx:id="chatStatusLabel" layoutX="14.0" layoutY="371.0" prefHeight="25.0" prefWidth="274.0" text="Label" />
+        <Button fx:id="sendMsgBtn" layoutX="346.0" layoutY="371.0" mnemonicParsing="false" onAction="#sendMsgBtnAction" prefHeight="25.0" prefWidth="50.0" text="Send" />
+        <TextArea fx:id="msgBox" layoutX="14.0" layoutY="306.0" prefHeight="55.0" prefWidth="382.0" promptText="Type a message" />
+        <Label fx:id="statusLabel" alignment="CENTER_RIGHT" layoutX="264.0" layoutY="14.0" prefHeight="25.0" prefWidth="132.0" text="Label" />
+        <Label fx:id="chatStatusLabel" layoutX="14.0" layoutY="371.0" prefHeight="25.0" prefWidth="249.0" text="Label" />
       <TextField fx:id="serverTextField" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="96.0" promptText="Enter Server" text="localhost" />
+      <Button fx:id="clearMsgBtn" layoutX="273.0" layoutY="371.0" mnemonicParsing="false" onAction="#clearMsgBtnAction" text="Clear all" />
     </children>
 </AnchorPane>

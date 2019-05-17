@@ -9,12 +9,12 @@ import java.io.IOException;
 import java.net.Socket;
 
 public class SocketClient {
+    private final String msgSeparator = "--------------------------";
     private int port;
     private String server;
     private Socket socket;
     private DataInputStream din;
     private DataOutputStream dout;
-    private final String msgSeparator = "\n----------\n";
     private Thread msgUpdaterThread;
 
     public void setPort(int port) {
@@ -57,7 +57,7 @@ public class SocketClient {
                     Main.controller.chatStatusLabel.setText("Can not connect to the server");
                 });
             }
-        } catch (IOException ignored) {
+        } catch (Exception ignored) {
         }
     }
 
@@ -69,10 +69,12 @@ public class SocketClient {
                 while (!msg.equals("stop")) {
                     msg = this.din.readUTF();
                     System.out.println(msg);
-                    final String tmp = msg;
-                    Platform.runLater(() -> Main.controller.receiveMsgBox.appendText("Server: " + tmp));
-                    Platform.runLater(() -> Main.controller.receiveMsgBox.appendText(this.msgSeparator));
-                    Platform.runLater(() -> Main.controller.chatStatusLabel.setText("Server replied"));
+                    final String tmp = msg.trim();
+                    Platform.runLater(() -> {
+                        Main.controller.receiveMsgBox.appendText(this.msgSeparator);
+                        Main.controller.receiveMsgBox.appendText("\n" + "Server: " + tmp + "\n");
+                        Main.controller.chatStatusLabel.setText("Server replied");
+                    });
                 }
             } catch (Exception ignored) {
             }
@@ -90,8 +92,8 @@ public class SocketClient {
             final String tmp = msg.trim();
             this.dout.writeUTF(tmp);
             this.dout.flush();
-            Platform.runLater(() -> Main.controller.receiveMsgBox.appendText("You: " + tmp));
             Platform.runLater(() -> Main.controller.receiveMsgBox.appendText(this.msgSeparator));
+            Platform.runLater(() -> Main.controller.receiveMsgBox.appendText("\n" + "You: " + tmp + "\n"));
             Platform.runLater(() -> Main.controller.msgBox.setText(null));
         } catch (IOException ignored) {
             return;

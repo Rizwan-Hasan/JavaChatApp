@@ -2,18 +2,22 @@ package appServer.socketCode;
 
 import appServer.Main;
 import javafx.application.Platform;
-import java.io.*;
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
 public class SocketServer {
+    private final String msgSeparator = "--------------------------";
     private int port;
     private ServerSocket serverSocket;
     private Socket socket;
     private DataInputStream din;
     private DataOutputStream dout;
-    private final String msgSeparator = "\n----------\n";
     private Thread msgUpdaterThread;
+    private String ExitCode = "_EXIT_";
 
     public void setPort(int port) {
         this.port = port;
@@ -54,10 +58,16 @@ public class SocketServer {
                 while (!msg.equals("stop")) {
                     msg = this.din.readUTF();
                     System.out.println(msg);
-                    final String tmp = msg;
-                    Platform.runLater(() -> Main.controller.receiveMsgBox.appendText("Client: " + tmp));
-                    Platform.runLater(() -> Main.controller.receiveMsgBox.appendText(this.msgSeparator));
-                    Platform.runLater(() -> Main.controller.chatStatusLabel.setText("Client replied"));
+                    final String tmp = msg.trim();
+                    if (!tmp.equals(this.ExitCode)) {
+                        Platform.runLater(() -> {
+                            Main.controller.receiveMsgBox.appendText(this.msgSeparator);
+                            Main.controller.receiveMsgBox.appendText("\n" + "Client: " + tmp + "\n");
+                            Main.controller.chatStatusLabel.setText("Client replied");
+                        });
+                    } else {
+                        Platform.runLater(() -> Main.controller.startServerBtn.fire());
+                    }
                 }
             } catch (Exception ignored) {
             }
@@ -75,8 +85,8 @@ public class SocketServer {
             final String tmp = msg.trim();
             this.dout.writeUTF(tmp);
             this.dout.flush();
-            Platform.runLater(() -> Main.controller.receiveMsgBox.appendText("You: " + tmp));
             Platform.runLater(() -> Main.controller.receiveMsgBox.appendText(this.msgSeparator));
+            Platform.runLater(() -> Main.controller.receiveMsgBox.appendText("\n" + "You: " + tmp + "\n"));
             Platform.runLater(() -> Main.controller.msgBox.setText(null));
         } catch (IOException ignored) {
             return;
