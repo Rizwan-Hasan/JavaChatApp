@@ -20,6 +20,7 @@ public class Main extends Application {
         Parent root = fxmlLoader.load();
         controller = fxmlLoader.getController();
         primaryStage.setTitle("Java Chat Application (Server)");
+        primaryStage.getIcons().add(new Resources().icon);
         primaryStage.setScene(new Scene(root));
         primaryStage.setResizable(false);
         primaryStage.show();
