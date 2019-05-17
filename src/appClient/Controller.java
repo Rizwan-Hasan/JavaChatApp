@@ -11,7 +11,7 @@ public class Controller extends ControllerObjectVars implements Initializable {
     private SocketClient client;
     private boolean connectionStatus = false;
     private Thread backgroundThread;
-    private String ExitCode = "_EXIT_";
+    public String ExitCode = "@_EXIT_@";
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -38,7 +38,7 @@ public class Controller extends ControllerObjectVars implements Initializable {
                 this.backgroundThread = new Thread(task);
                 // Start the thread
                 this.backgroundThread.start();
-                Thread.sleep(1000);
+                Thread.sleep(500);
                 System.out.println("Hello");
 
             } catch (Exception ignored) {
@@ -46,10 +46,11 @@ public class Controller extends ControllerObjectVars implements Initializable {
             }
             this.connectionStatus = true;
         } else {
+            this.client.sendMsg(this.ExitCode);
             client.closeConnection();
             try {
                 this.backgroundThread.interrupt();
-                Thread.sleep(1000);
+                Thread.sleep(500);
             } catch (Exception ignored) {
             }
             this.connectionStatus = false;
@@ -57,8 +58,6 @@ public class Controller extends ControllerObjectVars implements Initializable {
             this.statusLabel.setText("Server closed");
             this.connectServerBtn.setText("Connect");
             this.chatStatusLabel.setText("Start server and connect with to chat");
-            if (this.connectionStatus)
-                this.client.sendMsg(this.ExitCode);
         }
         event.consume();
     }

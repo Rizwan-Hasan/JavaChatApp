@@ -1,5 +1,6 @@
 package appClient.socketCode;
 
+import appClient.Controller;
 import appClient.Main;
 import javafx.application.Platform;
 
@@ -92,13 +93,17 @@ public class SocketClient {
             final String tmp = msg.trim();
             this.dout.writeUTF(tmp);
             this.dout.flush();
-            Platform.runLater(() -> Main.controller.receiveMsgBox.appendText(this.msgSeparator));
-            Platform.runLater(() -> Main.controller.receiveMsgBox.appendText("\n" + "You: " + tmp + "\n"));
+            if(!msg.equals(new Controller().ExitCode))
+                Platform.runLater(() -> {
+                    Main.controller.receiveMsgBox.appendText(this.msgSeparator);
+                    Main.controller.receiveMsgBox.appendText("\n" + "You: " + tmp + "\n");
+                });
             Platform.runLater(() -> Main.controller.msgBox.setText(null));
         } catch (IOException ignored) {
             return;
         }
-        Platform.runLater(() -> Main.controller.chatStatusLabel.setText("Message sent"));
+        if(!msg.equals(new Controller().ExitCode))
+            Platform.runLater(() -> Main.controller.chatStatusLabel.setText("Message sent"));
     }
 
 }

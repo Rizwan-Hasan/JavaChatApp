@@ -17,7 +17,7 @@ public class SocketServer {
     private DataInputStream din;
     private DataOutputStream dout;
     private Thread msgUpdaterThread;
-    private String ExitCode = "_EXIT_";
+    private String ExitCode = "@_EXIT_@";
 
     public void setPort(int port) {
         this.port = port;
@@ -55,7 +55,7 @@ public class SocketServer {
         Runnable task = () -> {
             try {
                 String msg = "";
-                while (!msg.equals("stop")) {
+                while (true) {
                     msg = this.din.readUTF();
                     System.out.println(msg);
                     final String tmp = msg.trim();
