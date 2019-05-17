@@ -6,15 +6,15 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="406.0" prefWidth="356.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appClient.Controller">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="406.0" prefWidth="356.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appClient.Controller">
     <children>
-        <TextField layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="102.0" />
-        <TextArea layoutX="14.0" layoutY="52.0" prefHeight="200.0" prefWidth="325.0" />
-        <Button layoutX="185.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="62.0" text="Connect" />
-        <Button layoutX="296.0" layoutY="371.0" mnemonicParsing="false" text="Send" />
-        <TextArea layoutX="14.0" layoutY="265.0" prefHeight="96.0" prefWidth="325.0" />
-        <Label alignment="CENTER_RIGHT" layoutX="254.0" layoutY="14.0" prefHeight="25.0" prefWidth="84.0" text="Label" />
-      <TextField layoutX="123.0" layoutY="14.0" prefHeight="25.0" prefWidth="54.0" />
-      <Label layoutX="14.0" layoutY="371.0" prefHeight="25.0" prefWidth="273.0" text="Label" />
+        <TextField fx:id="portTextField" layoutX="120.0" layoutY="14.0" prefHeight="25.0" prefWidth="50.0" promptText="Enter Port" text="12345" />
+        <TextArea fx:id="receiveMsgBox" layoutX="14.0" layoutY="52.0" prefHeight="244.0" prefWidth="325.0" />
+        <Button fx:id="connectServerBtn" layoutX="177.0" layoutY="14.0" mnemonicParsing="false" onAction="#connectServerBtnAction" prefHeight="25.0" prefWidth="77.0" text="Connect" />
+        <Button fx:id="sendMsgBtn" layoutX="296.0" layoutY="371.0" mnemonicParsing="false" onAction="#sendMsgBtnAction" text="Send" />
+        <TextArea fx:id="msgBox" layoutX="14.0" layoutY="306.0" prefHeight="55.0" prefWidth="325.0" />
+        <Label fx:id="statusLabel" alignment="CENTER_RIGHT" layoutX="262.0" layoutY="14.0" prefHeight="25.0" prefWidth="77.0" text="Label" />
+        <Label fx:id="chatStatusLabel" layoutX="14.0" layoutY="371.0" prefHeight="25.0" prefWidth="274.0" text="Label" />
+      <TextField fx:id="serverTextField" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="96.0" promptText="Enter Server" text="localhost" />
     </children>
 </AnchorPane>

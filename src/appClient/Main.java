@@ -8,16 +8,20 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    @Override
-    public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("MainWindow.fxml"));
-        primaryStage.setTitle("Client Window");
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
-    }
-
+    public static Controller controller;
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception{
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainWindow.fxml"));
+        Parent root = fxmlLoader.load();
+        controller = fxmlLoader.getController();
+        primaryStage.setTitle("Java Chat Application (Client)");
+        primaryStage.setScene(new Scene(root));
+        primaryStage.setResizable(false);
+        primaryStage.show();
     }
 }

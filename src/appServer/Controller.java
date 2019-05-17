@@ -15,6 +15,7 @@ public class Controller extends ControllerObjectVars implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        this.receiveMsgBox.setEditable(false);
         this.statusLabel.setText("Server is off");
         this.chatStatusLabel.setText("Start server and connect with client to chat");
     }

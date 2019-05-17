@@ -1,14 +1,16 @@
-package appServer.socketCode;
+package appClient.socketCode;
 
-import appServer.Main;
+import appClient.Main;
 import javafx.application.Platform;
-import java.io.*;
-import java.net.ServerSocket;
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import java.net.Socket;
 
-public class SocketServer {
+public class SocketClient {
     private int port;
-    private ServerSocket serverSocket;
+    private String server;
     private Socket socket;
     private DataInputStream din;
     private DataOutputStream dout;
@@ -19,10 +21,13 @@ public class SocketServer {
         this.port = port;
     }
 
+    public void setServer(String server) {
+        this.server = server;
+    }
+
     public void closeConnection() {
         try {
-            if (serverSocket.isBound()) {
-                serverSocket.close();
+            if (socket.isBound()) {
                 socket.close();
                 this.msgUpdaterThread.interrupt();
             }
@@ -30,18 +35,28 @@ public class SocketServer {
         }
     }
 
-    public void startServer() {
+    public void connectServer() {
         try {
-            this.serverSocket = new ServerSocket(port);
-            this.socket = serverSocket.accept();
+            this.socket = new Socket(this.server, this.port);
+            Platform.runLater(() -> Main.controller.statusLabel.setText("Connecting"));
+            if (this.socket.isBound()) {
+                System.out.println("Server connected");
+                Platform.runLater(() -> {
+                    Main.controller.chatStatusLabel.setText("Server connected");
+                    Main.controller.statusLabel.setText("Connected");
+                    Main.controller.connectServerBtn.setText("Disconnect");
+                });
 
-            System.out.println("Client connected");
-            Platform.runLater(() -> Main.controller.chatStatusLabel.setText("Client connected"));
+                this.din = new DataInputStream(socket.getInputStream());
+                this.dout = new DataOutputStream(socket.getOutputStream());
 
-            this.din = new DataInputStream(socket.getInputStream());
-            this.dout = new DataOutputStream(socket.getOutputStream());
-
-            this.msgUpdater();
+                this.msgUpdater();
+            } else {
+                Platform.runLater(() -> {
+                    Main.controller.statusLabel.setText("Connect");
+                    Main.controller.chatStatusLabel.setText("Can not connect to the server");
+                });
+            }
         } catch (IOException ignored) {
         }
     }
@@ -55,9 +70,9 @@ public class SocketServer {
                     msg = this.din.readUTF();
                     System.out.println(msg);
                     final String tmp = msg;
-                    Platform.runLater(() -> Main.controller.receiveMsgBox.appendText("Client: " + tmp));
+                    Platform.runLater(() -> Main.controller.receiveMsgBox.appendText("Server: " + tmp));
                     Platform.runLater(() -> Main.controller.receiveMsgBox.appendText(this.msgSeparator));
-                    Platform.runLater(() -> Main.controller.chatStatusLabel.setText("Client replied"));
+                    Platform.runLater(() -> Main.controller.chatStatusLabel.setText("Server replied"));
                 }
             } catch (Exception ignored) {
             }

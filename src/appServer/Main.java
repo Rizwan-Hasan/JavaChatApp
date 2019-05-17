@@ -19,7 +19,7 @@ public class Main extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainWindow.fxml"));
         Parent root = fxmlLoader.load();
         controller = fxmlLoader.getController();
-        primaryStage.setTitle("Socket Chat App (Server)");
+        primaryStage.setTitle("Java Chat Application (Server)");
         primaryStage.setScene(new Scene(root));
         primaryStage.setResizable(false);
         primaryStage.show();
