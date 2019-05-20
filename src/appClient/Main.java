@@ -21,7 +21,10 @@ public class Main extends Application {
         controller = fxmlLoader.getController();
         primaryStage.setTitle("Java Chat Application (Client)");
         primaryStage.getIcons().add(new Resources().icon);
-        primaryStage.setScene(new Scene(root));
+        Scene scene = new Scene(root);
+        scene.getStylesheets().clear();
+        scene.getStylesheets().add(getClass().getResource("resources/stylesheet.css").toExternalForm());
+        primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         primaryStage.show();
     }

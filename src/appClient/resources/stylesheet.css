@@ -1,0 +1,119 @@
+
+#anchorPane {
+    -fx-background-color: #e0e0e0;
+}
+
+.label {
+    -fx-text-fill: #263238;
+}
+
+#receiveMsgBox {
+    -fx-text-fill: #263238;
+    -fx-background-radius: 10 10 2 2;
+    -fx-border-color: #9e9e9e;
+    -fx-border-radius: 10 10 2 2;
+    -fx-effect: dropshadow(three-pass-box, rgba(66, 66, 66, 0.5), 5, 0, 0, 0);
+}
+
+#receiveMsgBox .scroll-pane {
+    -fx-background-color: transparent;
+}
+
+#receiveMsgBox .scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+#receiveMsgBox .scroll-pane .content {
+    -fx-background-color: transparent;
+}
+
+#receiveMsgBox:hover {
+    -fx-border-color: grey;
+}
+
+#receiveMsgBox:focused {
+    -fx-background-color: #37474f;
+    -fx-highlight-text-fill: #263238;
+    -fx-highlight-fill: #bdbdbd;
+    -fx-text-fill: #cfd8dc;
+    -fx-border-color: #263238;
+    -fx-effect: dropshadow(three-pass-box, rgba(38, 50, 56, 1), 10, 0, 0, 0);
+}
+
+#msgBox {
+    -fx-text-fill: #263238;
+    -fx-background-radius: 2 2 10 10;
+    -fx-border-color: #9e9e9e;
+    -fx-border-radius: 2 2 10 10;
+    -fx-effect: dropshadow(three-pass-box, rgba(66, 66, 66, 0.5), 5, 0, 0, 0);
+}
+
+#msgBox .scroll-pane {
+    -fx-background-color: transparent;
+}
+
+#msgBox .scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+#msgBox .scroll-pane .content {
+    -fx-background-color: transparent;
+}
+
+#msgBox:hover {
+    -fx-border-color: grey;
+}
+
+#msgBox:focused {
+    -fx-background-color: #37474f;
+    -fx-highlight-text-fill: #263238;
+    -fx-highlight-fill: #bdbdbd;
+    -fx-text-fill: #cfd8dc;
+    -fx-effect: dropshadow(three-pass-box, rgba(38, 50, 56, 1), 10, 0, 0, 0);
+}
+
+.text-field {
+    -fx-text-fill: #263238;
+    -fx-background-radius: 10 2 2 10;
+    -fx-border-color: #9e9e9e;
+    -fx-border-radius: 10 2 2 10;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(three-pass-box, rgba(66, 66, 66, 0.5), 5, 0, 1, 1);
+}
+
+.text-field:hover {
+    -fx-border-color: grey;
+}
+
+#connectServerBtn {
+    -fx-background-radius: 2 10 10 2;
+    -fx-border-radius: 2 10 10 2;
+}
+
+.text-field:focused {
+    -fx-background-color: #37474f;
+    -fx-highlight-text-fill: #263238;
+    -fx-highlight-fill: #bdbdbd;
+    -fx-text-fill: #cfd8dc;
+    -fx-effect: dropshadow(three-pass-box, rgba(38, 50, 56, 1), 10, 0, 0, 0);
+}
+
+#portTextField {
+    -fx-background-radius: 2;
+    -fx-border-radius: 2;
+}
+
+.button {
+    -fx-background-color: #e0e0e0;
+    -fx-effect: dropshadow(three-pass-box, rgba(55, 71, 79, 0.8), 10, 0, 2, 2);
+}
+
+.button:hover {
+    -fx-background-color: #eeeeee;
+    -fx-effect: dropshadow(three-pass-box, rgba(38, 50, 79, 0.7), 10, 0, 2, 2);
+}
+
+.button:pressed {
+    -fx-background-color: #bdbdbd;
+    -fx-effect: dropshadow(three-pass-box, rgba(55, 71, 79, 0.8), 10, 0, 2, 2);
+}
