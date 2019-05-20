@@ -75,7 +75,6 @@ public class SocketServer {
 
         // Run the task in a background thread
         this.msgUpdaterThread = new Thread(task);
-
         // Start the thread
         this.msgUpdaterThread.start();
     }

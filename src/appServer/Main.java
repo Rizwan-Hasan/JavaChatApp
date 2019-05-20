@@ -1,6 +1,7 @@
 package appServer;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -26,6 +27,11 @@ public class Main extends Application {
         scene.getStylesheets().add(getClass().getResource("resources/stylesheet.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
+        primaryStage.setOnCloseRequest(e -> {
+            Platform.exit();
+            System.exit(0);
+        });
+        Platform.setImplicitExit(true);
         primaryStage.show();
     }
 }
