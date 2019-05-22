@@ -15,8 +15,8 @@ public class Controller extends ControllerObjectVars implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //this.serverTextField.setText(null);
-        //this.portTextField.setText(null);
+        this.serverTextField.setText(null);
+        this.portTextField.setText(null);
         this.receiveMsgBox.setEditable(false);
         this.receiveMsgBox.setWrapText(true);
         this.msgBox.setWrapText(true);
